@@ -40,5 +40,10 @@ text.bind('<Motion>', get_pos)
 entry.bind('<FocusIn>', lambda event: print('entry field was selected'))
 entry.bind('<FocusOut>', lambda event: print('entry field was unselected'))
 
+
+## exercise ##
+text.bind('<Shift-MouseWheel>', lambda event: print('Mousewheel'))
+
+
 # run
 window.mainloop()
