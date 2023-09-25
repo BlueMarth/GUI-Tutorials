@@ -3,14 +3,9 @@ import tkinter as tk
 from tkinter import ttk
 
 
-# setups
-rootWidth = 800
-rootHeight = 500
-rootOffsetx = 100
-rootOffsety = 50
-root_geometry = str(rootWidth) + 'x' + str(rootHeight) + '+' + str(rootOffsetx) + '+' + str(rootOffsety)
+# setup
 root = tk.Tk()
-root.geometry(root_geometry)
+root.geometry('600x400+200+100')
 root.title('Root')
 
 
