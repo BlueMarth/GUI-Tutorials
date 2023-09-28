@@ -10,23 +10,21 @@ from tkinter import ttk
 
 # option 2
 def create_segment(parent, label_text, button_text, ex_text):
-    frame = ttk.Frame()
+    frame = ttk.Frame(parent)
     
     # grid layout
-    frame.rowconfigure((0,1), weight = 1)
+    frame.rowconfigure(0, weight = 1)
     frame.columnconfigure((0,1,2), weight = 1, uniform = 'a')
 
     # widgets
-    ttk.Label(frame, text = label_text).grid(row = 0, column = 0, sticky = 'nsew', rowspan = 2)
-    ttk.Button(frame, text = button_text).grid(row = 0, column = 1, sticky = 'nsew', rowspan = 2)
-    ttk.Entry(frame).grid(row = 1, column = 2, sticky = 'nsew')
-    ttk.Button(frame, text = ex_text).grid(row = 1, column = 2, sticky = 'nsew')
+    ttk.Label(frame, text = label_text).grid(row = 0, column = 0, sticky = 'nsew')
+    ttk.Button(frame, text = button_text).grid(row = 0, column = 1, sticky = 'nsew')
 
     return frame
     
 # option 1
 class Segment(ttk.Frame):
-    def __init__(self, parent, label_text, button_text):
+    def __init__(self, parent, label_text, button_text, ex_text):
         super().__init__(parent)
 
         # grid layout
@@ -34,9 +32,15 @@ class Segment(ttk.Frame):
         self.columnconfigure((0,1,2), weight = 1, uniform = 'a')
         ttk.Label(self, text = label_text).grid(row = 0, column = 0, sticky = 'nsew')
         ttk.Button(self, text = button_text).grid(row = 0, column = 1, sticky = 'nsew')
-        
+        self.create_ex_box(ex_text).grid(row = 0, column = 2, sticky = 'nsew')
 
         self.pack(expand = True, fill = 'both', padx = 10, pady = 10)
+
+    def create_ex_box(self, text):
+        frame = ttk.Frame(self)
+        ttk.Entry(frame).pack(expand = True, fill = 'both', padx = 5, pady = 5)
+        ttk.Button(frame, text = text).pack(expand = True, fill = 'both', padx = 5, pady = 5)
+        return frame
 
 
 # window
@@ -46,15 +50,15 @@ window.geometry('400x600')
 
 # widgets
 # create_segment(window, 'label', 'button').pack(expand = True, fill = 'both', padx = 10, pady = 10)
-create_segment(window, '1', 'a', 'ex1').pack(expand = True, fill = 'both', padx = 10, pady = 10)
-create_segment(window, '2', 'b', 'ex2').pack(expand = True, fill = 'both', padx = 10, pady = 10)
-create_segment(window, '3', 'c', 'ex3').pack(expand = True, fill = 'both', padx = 10, pady = 10)
-create_segment(window, '4', 'd', 'ex4').pack(expand = True, fill = 'both', padx = 10, pady = 10)
+# create_segment(window, '1', 'a', 'ex1').pack(expand = True, fill = 'both', padx = 10, pady = 10)
+# create_segment(window, '2', 'b', 'ex2').pack(expand = True, fill = 'both', padx = 10, pady = 10)
+# create_segment(window, '3', 'c', 'ex3').pack(expand = True, fill = 'both', padx = 10, pady = 10)
+# create_segment(window, '4', 'd', 'ex4').pack(expand = True, fill = 'both', padx = 10, pady = 10)
 
-# Segment(window, '1', 'a')
-# Segment(window, '2', 'b')
-# Segment(window, '3', 'c')
-# Segment(window, '4', 'd')
+Segment(window, '1', 'a', 'ex1')
+Segment(window, '2', 'b', 'ex2')
+Segment(window, '3', 'c', 'ex3')
+Segment(window, '4', 'd', 'ex4')
 
 # run
 window.mainloop()
