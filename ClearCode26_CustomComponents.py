@@ -9,16 +9,18 @@ import tkinter as tk
 from tkinter import ttk
 
 # option 2
-def create_segment(parent, label_text, button_text):
+def create_segment(parent, label_text, button_text, ex_text):
     frame = ttk.Frame()
     
     # grid layout
-    frame.rowconfigure(0, weight = 1)
+    frame.rowconfigure((0,1), weight = 1)
     frame.columnconfigure((0,1,2), weight = 1, uniform = 'a')
 
     # widgets
-    ttk.Label(frame, text = label_text).grid(row = 0, column = 0, sticky = 'nsew')
-    ttk.Button(frame, text = button_text).grid(row = 0, column = 1, sticky = 'nsew')
+    ttk.Label(frame, text = label_text).grid(row = 0, column = 0, sticky = 'nsew', rowspan = 2)
+    ttk.Button(frame, text = button_text).grid(row = 0, column = 1, sticky = 'nsew', rowspan = 2)
+    ttk.Entry(frame).grid(row = 1, column = 2, sticky = 'nsew')
+    ttk.Button(frame, text = ex_text).grid(row = 1, column = 2, sticky = 'nsew')
 
     return frame
     
@@ -43,11 +45,11 @@ window.title('Combined layout')
 window.geometry('400x600')
 
 # widgets
-create_segment(window, 'label', 'button').pack(expand = True, fill = 'both', padx = 10, pady = 10)
-create_segment(window, '1', 'a').pack(expand = True, fill = 'both', padx = 10, pady = 10)
-create_segment(window, '2', 'b').pack(expand = True, fill = 'both', padx = 10, pady = 10)
-create_segment(window, '3', 'c').pack(expand = True, fill = 'both', padx = 10, pady = 10)
-create_segment(window, '4', 'd').pack(expand = True, fill = 'both', padx = 10, pady = 10)
+# create_segment(window, 'label', 'button').pack(expand = True, fill = 'both', padx = 10, pady = 10)
+create_segment(window, '1', 'a', 'ex1').pack(expand = True, fill = 'both', padx = 10, pady = 10)
+create_segment(window, '2', 'b', 'ex2').pack(expand = True, fill = 'both', padx = 10, pady = 10)
+create_segment(window, '3', 'c', 'ex3').pack(expand = True, fill = 'both', padx = 10, pady = 10)
+create_segment(window, '4', 'd', 'ex4').pack(expand = True, fill = 'both', padx = 10, pady = 10)
 
 # Segment(window, '1', 'a')
 # Segment(window, '2', 'b')
