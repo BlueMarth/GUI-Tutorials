@@ -63,15 +63,16 @@ class Main(ttk.Frame):
     def __init__(self, parent):
         super().__init__(parent)
         self.place(x = 0.3, y = 0, relwidth = 0.7, relheight = 1)
-        Entry(self, 1,2,3)
+        Entry(self, 'Entry 1','Button 1','green')
+        Entry(self, 'Entry 2','Button 2','blue')
+        Entry(self, 'Entry 3','Button 3','green')
         
-
 class Entry(ttk.Frame):
     def __init__(self, parent, label_text, button_text, label_background):
         super().__init__(parent)
         
-        label = ttk.Label(self, text = 'Test 1', background = 'red')
-        button = ttk.Button(self, text = 'Button')
+        label = ttk.Label(self, text = label_text, background = label_background)
+        button = ttk.Button(self, text = button_text)
 
         label.pack(expand = True, fill = 'both')
         button.pack(expand = True, fill = 'both', pady = 10)
