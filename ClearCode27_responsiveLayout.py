@@ -14,6 +14,9 @@ class App(tk.Tk):
         self.title(title)
         self.geometry(f'{start_size[0]}x{start_size[1]}')
 
+        self.frame = ttk.Frame(self)
+        self.frame.pack(expand = True, fill = 'both')
+
         # size dictionary relates size of window to layout change
         SizeNotifier(
             self,
@@ -67,7 +70,7 @@ class SizeNotifier:
         
         self.window.update()
 
-        min_height = self.window.winfo_screenheight()
+        min_height = self.window.winfo_height()
         min_width = list(self.size_dict)[0]
         self.window.minsize(min_width,min_height)
         # self.window.bind('<Configure>', self.check_size)
